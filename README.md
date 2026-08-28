@@ -106,7 +106,7 @@ X. FPR (False Positive Rate)
 Formula: FPR = FP / FP + TN 
 
 | Modelo                  |   FPR  |  TPR  |
-| ----------------------- | -----_ | ----- 
+| ----------------------- | ------ | ----- 
 | **XGBoost**             | 0.0501 | .8092 | 
 | **Decision Tree**       | 0.198  |       |
 | **Random Forest**       | 0.0222 | .7651 |
