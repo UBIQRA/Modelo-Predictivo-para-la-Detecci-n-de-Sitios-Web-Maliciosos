@@ -80,13 +80,13 @@ Web_Traffic, Page_Rank, Google_Index, Links_pointing_to_page
 
 VIII. Resultados de Modelos
 
-| Modelo                  | Accuracy | Precision | Recall | F1-score | AUC       |
-| ----------------------- | -------- | --------- | ------ | -------- | --------- |
-| **XGBoost**             | **0.89** | 0.90      | 0.886  | 0.888    | **0.949** |
-| **Decision Tree**       | 0.88     | 0.889     | 0.876  | 0.878    | 0.938     |
-| **Random Forest**       | 0.876    | 0.895     | 0.871  | 0.873    | 0.901     |
-| **Logistic Regression** | 0.82     | 0.83      | 0.63   | 0.81     | 0.88      |
-| **Naive Bayes**         | 0.65     | 0.66      | 0.31   | 0.64     | 0.70      |
+| Modelo                  | Accuracy   | Precision | Recall | F1-score | AUC       |
+| ----------------------- | ---------- | --------- | ------ | -------- | --------- |
+| **XGBoost**             | **0.8843** | 0.9338    | 0.8092 | 0.86.69  | **0.949** |
+| **Decision Tree**       | 0.88       | 0.889     | 0.876  | 0.878    | 0.938     |
+| **Random Forest**       | 0.8786      | 0.9678     | 0.7651  | 0.85.46    | 0.901     |
+| **Logistic Regression** | 0.82       | 0.83      | 0.63   | 0.81     | 0.9      |
+| **Naive Bayes**         | 0.65       | 0.66      | 0.31   | 0.64     | 0.696      |
 
 Modelo con mejor rendimiento:
 XGBoost Tree Ensemble, con AUC de 0.949 y F1-score de 0.888.
@@ -95,24 +95,38 @@ IX. Matriz de confusión para análisis de errores.
 
 | Modelo                  |  TP  |  TN  |  FP |  FN  | 
 | ----------------------- | -----| -----| ----| -----| 
-| **XGBoost**             | 3202 | 2384 | 562 | 169  | 
+| **XGBoost**             | 2384 | 3202 | 169 | 562  | 
 | **Decision Tree**       | 3182 | 2376 | 570 | 189  | 
-| **Random Forest**       | 3296 | 2254 | 692  | 75  |
+| **Random Forest**       | 2254 | 3296 | 75  | 692  |
 | **Logistic Regression** | 3064 | 2102 | 844 | 307  |
 | **Naive Bayes**         | 1815 | 2241 | 705 | 1556 | 
 
 X. FPR (False Positive Rate)
 
-| Modelo                  |   FPR |
-| ----------------------- | ----- | 
-| **XGBoost**             | 0.191 | 
-| **Decision Tree**       | 0.198 | 
-| **Random Forest**       | 0.237 | 
-| **Logistic Regression** | 0.286 | 
-| **Naive Bayes**         | 0.224 | 
+Formula: FPR = FP / FP + TN 
 
+| Modelo                  |   FPR  |  TPR  |
+| ----------------------- | -----_ | ----- 
+| **XGBoost**             | 0.0501 | .8092 | 
+| **Decision Tree**       | 0.198  |       |
+| **Random Forest**       | 0.0222 | .7651 |
+| **Logistic Regression** | 0.286  |       |
+| **Naive Bayes**         | 0.224  |       |
 
-XI. Visualización y Comparativas
+XI. Análisis de errores
+
+Formula: 
+
+Error global = 1 − Accuracy
+Clasificaciones incorrectas = FP + FN
+
+| Modelo         | Clasificaciones incorrectas | Error global | Clasificaciones correctas |
+| -------------- | --------------------------: | -----------: | --------------------------
+| XGBoost        |                         731 |       11.57% |                     5586 |
+| XGBoost        |                         731 |       11.57% |                      |
+| Random Forest  |                         767 |       12.14% |                     5550 |
+
+XII. Visualización y Comparativas
 
 -Curvas ROC superpuestas para todos los modelos.
 -Matriz de confusión para análisis de errores.
@@ -120,7 +134,7 @@ XI. Visualización y Comparativas
 -Gráficos interactivos (Pie Chart, Bar Chart, ROC Curve) en KNIME.
 -Feature Importance para interpretar las variables más influyentes.
 
-XII . Conclusión y Reflexión Final
+XIII . Conclusión y Reflexión Final
 
 -La Inteligencia Artificial se consolida como un aliado estratégico en la detección de amenazas digitales.
 -Este proyecto demuestra que: Los modelos supervisados permiten una detección precisa de sitios maliciosos.
