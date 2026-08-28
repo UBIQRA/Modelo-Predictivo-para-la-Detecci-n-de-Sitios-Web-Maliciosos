@@ -91,14 +91,36 @@ VIII. Resultados de Modelos
 Modelo con mejor rendimiento:
 XGBoost Tree Ensemble, con AUC de 0.949 y F1-score de 0.888.
 
-Visualización y Comparativas
+IX. Matriz de confusión para análisis de errores.
+
+| Modelo                  |  TP  |  TN  |  FP |  FN  | 
+| ----------------------- | -----| -----| ----| -----| 
+| **XGBoost**             | 3202 | 2384 | 562 | 169  | 
+| **Decision Tree**       | 3182 | 2376 | 570 | 189  | 
+| **Random Forest**       | 3296 | 2254 | 692  | 75  |
+| **Logistic Regression** | 3064 | 2102 | 844 | 307  |
+| **Naive Bayes**         | 1815 | 2241 | 705 | 1556 | 
+
+X. FPR (False Positive Rate)
+
+| Modelo                  |   FPR |
+| ----------------------- | ----- | 
+| **XGBoost**             | 0.191 | 
+| **Decision Tree**       | 0.198 | 
+| **Random Forest**       | 0.237 | 
+| **Logistic Regression** | 0.286 | 
+| **Naive Bayes**         | 0.224 | 
+
+
+XI. Visualización y Comparativas
 
 -Curvas ROC superpuestas para todos los modelos.
 -Matriz de confusión para análisis de errores.
+-FPR (False Positive Rate).
 -Gráficos interactivos (Pie Chart, Bar Chart, ROC Curve) en KNIME.
 -Feature Importance para interpretar las variables más influyentes.
 
-IX. Conclusión y Reflexión Final
+XII . Conclusión y Reflexión Final
 
 -La Inteligencia Artificial se consolida como un aliado estratégico en la detección de amenazas digitales.
 -Este proyecto demuestra que: Los modelos supervisados permiten una detección precisa de sitios maliciosos.
