@@ -84,22 +84,22 @@ VIII. Resultados de Modelos
 | ----------------------- | ---------- | --------- | ------ | -------- | --------- |
 | **XGBoost**             | **0.8843** | 0.9338    | 0.8092 | 0.8669   | **0.949** |
 | **Decision Tree**       | 0.88       | 0.889     | 0.876  | 0.878    | 0.938     |
-| **Random Forest**       | 0.8786      | 0.9678   | 0.7651 | 0.8546   | 0.901     |
-| **Logistic Regression** | 0.8178      | 0.8726   | 0.7135 | 0.7851   | 0.9       |
-| **Naive Bayes**         | 0.65       | 0.66      | 0.31   | 0.64     | 0.696     |
+| **Random Forest**       | 0.8786     | 0.9678    | 0.7651 | 0.8546   | 0.901     |
+| **Logistic Regression** | 0.8178     | 0.8726    | 0.7135 | 0.7851   | 0.9       |
+| **Naive Bayes**         | 0.6421     | 0.5902    | 0.7607 | 0.6647   | 0.696     |
 
 Modelo con mejor rendimiento:
 XGBoost Tree Ensemble, con AUC de 0.949 y F1-score de 0.888.
 
 IX. Matriz de confusión para análisis de errores.
 
-| Modelo                  |  TP  |  TN  |  FP |  FN  | 
-| ----------------------- | -----| -----| ----| -----| 
-| **XGBoost**             | 2384 | 3202 | 169 | 562  | 
-| **Decision Tree**       | 3182 | 2376 | 570 | 189  | 
-| **Random Forest**       | 2254 | 3296 | 75  | 692  |
-| **Logistic Regression** | 2102 | 3064 | 307 | 844  |
-| **Naive Bayes**         | 1815 | 2241 | 705 | 1556 | 
+| Modelo                  |  TP  |  TN  |  FP  |  FN  | 
+| ----------------------- | -----| -----| -----| -----| 
+| **XGBoost**             | 2384 | 3202 | 169  | 562  | 
+| **Decision Tree**       | 3182 | 2376 | 570  | 189  | 
+| **Random Forest**       | 2254 | 3296 | 75   | 692  |
+| **Logistic Regression** | 2102 | 3064 | 307  | 844  |
+| **Naive Bayes**         | 2241 | 1815 | 1556 | 705  | 
 
 X. FPR (False Positive Rate)
 
@@ -111,7 +111,7 @@ Formula: FPR = FP / FP + TN
 | **Decision Tree**       | 0.198  |        |
 | **Random Forest**       | 0.0222 | 0.7651 |
 | **Logistic Regression** | 0.0910 | 0.7135 |
-| **Naive Bayes**         | 0.224  |        |
+| **Naive Bayes**         | 0.4615 | 0.7607 |
 
 XI. Análisis de errores
 
@@ -126,6 +126,7 @@ Clasificaciones incorrectas = FP + FN
 | XGBoost              |                         731  |       11.57% |                      |
 | Random Forest        |                         767  |       12.14% |                     5550 |
 | Logistic Regression  |                         1151 |       18.22% |                     5166 |
+| Naive Bayes          |                         2261 |       35.79% |                     4056 |
 
 XII. Visualización y Comparativas
 
