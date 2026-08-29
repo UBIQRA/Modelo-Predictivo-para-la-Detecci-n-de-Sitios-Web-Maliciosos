@@ -80,13 +80,13 @@ Web_Traffic, Page_Rank, Google_Index, Links_pointing_to_page
 
 VIII. Resultados de Modelos
 
-| Modelo                  | Accuracy   | Precision | Recall | F1-score | AUC       |
-| ----------------------- | ---------- | --------- | ------ | -------- | --------- |
-| **XGBoost**             | **0.8843** | 0.9338    | 0.8092 | 0.8669   | **0.949** |
-| **Decision Tree**       | 0.8798       | 0.9263    | 0.8065 | 0.8623   | 0.938     |
-| **Random Forest**       | 0.8786     | 0.9678    | 0.7651 | 0.8546   | 0.901     |
-| **Logistic Regression** | 0.8178     | 0.8726    | 0.7135 | 0.7851   | 0.9       |
-| **Naive Bayes**         | 0.6421     | 0.5902    | 0.7607 | 0.6647   | 0.696     |
+| Modelo                  | Accuracy   | Precision | Recall | F1-score | AUC       |  Choen´s Kappa |
+| ----------------------- | ---------- | --------- | ------ | -------- | --------- | -------------- |
+| **XGBoost**             | **0.8843** | 0.9338    | 0.8092 | 0.8669   | **0.949** |  0.766         |
+| **Decision Tree**       | 0.8798     | 0.9263    | 0.8065 | 0.8623   | 0.938     |  0.757         |
+| **Random Forest**       | 0.8786     | 0.9678    | 0.7651 | 0.8546   | 0.901     |  0.753         |
+| **Logistic Regression** | 0.8178     | 0.8726    | 0.7135 | 0.7851   | 0.9       |  0.630         |
+| **Naive Bayes**         | 0.6421     | 0.5902    | 0.7607 | 0.6647   | 0.696     |  0.294         |
 
 Modelo con mejor rendimiento:
 XGBoost Tree Ensemble, con AUC de 0.949 y F1-score de 0.8669
