@@ -89,7 +89,7 @@ VIII. Resultados de Modelos
 | **Naive Bayes**         | 0.6421     | 0.5902    | 0.7607 | 0.6647   | 0.696     |
 
 Modelo con mejor rendimiento:
-XGBoost Tree Ensemble, con AUC de 0.949 y F1-score de 0.888.
+XGBoost Tree Ensemble, con AUC de 0.949 y F1-score de 0.8669
 
 IX. Matriz de confusión para análisis de errores.
 
