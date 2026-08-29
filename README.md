@@ -128,6 +128,50 @@ Clasificaciones incorrectas = FP + FN
 | Logistic Regression  |                         1151 |       18.22% |                     5166 |
 | Naive Bayes          |                         2261 |       35.79% |                     4056 |
 
+XII. Interpretabilidad y análisis global
+
+1. XGBoost Feature Importance
+
+| Rank | Variable       | Importance |
+| ---: | -------------- | ---------: |
+|    1 | URL_Length     |     56.013 |
+|    2 | SSLFinal_State |     49.365 |
+|    3 | Prefix_Suffix  |     20.744 |
+|    4 | URL_of_Anchor  |     19.981 |
+|    5 | Have_At        |     13.856 |
+|    6 | SFH            |      3.422 |
+|    7 | Web_Traffic    |      3.268 |
+|    8 | Mouse_over     |      3.070 |
+|    9 | Links_in_tags  |      2.131 |
+|   10 | Iframe         |      2.042 |
+
+
+3. Surrogate GLM
+
+Formula: GLM_Absolute_Importance = abs(GLM Coefficient)
+
+GLM Coefficient → indica dirección y magnitud del efecto.
+GLM_Absolute_Importance → elimina el signo y conserva la magnitud.
+
+| Feature        | GLM Coefficient | GLM_Absolute_Importance |
+| -------------- | --------------: | ----------------------: |
+| URL_of_Anchor |         -13.129 |                  13.129  |
+| Redirect      |           7.148 |                   7.148  |
+| URL_Length    |          -6.372 |                   6.372  |
+| SSLFinal_State|          -5.760 |                   5.760  |
+| Iframe        |           5.009 |                   5.009  |
+| Favicon       |           4.353 |                   4.353  |
+| Right_Click   |          -4.030 |                   4.030  |
+| Mouse_over    |          -3.695 |                   3.695  |
+| Web_Traffic   |          -3.675 |                   3.675  |
+| popUpWidnow   |          -2.676 |                   2.676  |
+
+Surrogate Decision Tree
+Surrogate Random Forest
+Comparación de la fidelidad de los modelos surrogate.
+Identificación de las variables con mayor influencia global.
+
+
 XII. Visualización y Comparativas
 
 -Curvas ROC superpuestas para todos los modelos.
