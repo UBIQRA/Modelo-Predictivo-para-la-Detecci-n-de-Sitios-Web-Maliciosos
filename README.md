@@ -83,7 +83,7 @@ VIII. Resultados de Modelos
 | Modelo                  | Accuracy   | Precision | Recall | F1-score | AUC       |
 | ----------------------- | ---------- | --------- | ------ | -------- | --------- |
 | **XGBoost**             | **0.8843** | 0.9338    | 0.8092 | 0.8669   | **0.949** |
-| **Decision Tree**       | 0.88       | 0.889     | 0.876  | 0.878    | 0.938     |
+| **Decision Tree**       | 0.8798       | 0.9263    | 0.8065 | 0.8623   | 0.938     |
 | **Random Forest**       | 0.8786     | 0.9678    | 0.7651 | 0.8546   | 0.901     |
 | **Logistic Regression** | 0.8178     | 0.8726    | 0.7135 | 0.7851   | 0.9       |
 | **Naive Bayes**         | 0.6421     | 0.5902    | 0.7607 | 0.6647   | 0.696     |
@@ -108,7 +108,7 @@ Formula: FPR = FP / FP + TN
 | Modelo                  |   FPR  |  TPR   |
 | ----------------------- | ------ | ----- 
 | **XGBoost**             | 0.0501 | 0.8092 | 
-| **Decision Tree**       | 0.198  |        |
+| **Decision Tree**       | 0.0560 | 0.8065 |
 | **Random Forest**       | 0.0222 | 0.7651 |
 | **Logistic Regression** | 0.0910 | 0.7135 |
 | **Naive Bayes**         | 0.4615 | 0.7607 |
@@ -123,7 +123,7 @@ Clasificaciones incorrectas = FP + FN
 | Modelo               | Clasificaciones incorrectas  | Error global | Clasificaciones correctas |
 | -------------------- | ---------------------------: | -----------: | --------------------------
 | XGBoost              |                         731  |       11.57% |                     5586 |
-| XGBoost              |                         731  |       11.57% |                      |
+| Decision Tree        |                         759  |       12.02% |                     5558 |
 | Random Forest        |                         767  |       12.14% |                     5550 |
 | Logistic Regression  |                         1151 |       18.22% |                     5166 |
 | Naive Bayes          |                         2261 |       35.79% |                     4056 |
