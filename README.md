@@ -28,19 +28,19 @@ La detección temprana de sitios fraudulentos es clave para reducir riesgos y fo
 
 **V. Metodología de Análisis**
 
-5.1. Análisis Exploratorio de Datos (EDA)
+**5.1. Análisis Exploratorio de Datos (EDA)**
    
 -Identificación de relaciones, anomalías y patrones en los datos.
 -Transformación y normalización para preparar el dataset para modelado.
 
-5.2. Proceso ETL
+**5.2. Proceso ETL**
    
 -Limpieza y preparación de datos con nodos KNIME:
 -Missing Value para completar datos faltantes.
 -Number to String para conversión de tipos.
 -Rule Engine para homologar variables de salida.
 
-5.3. Modelado y Entrenamiento
+**5.3. Modelado y Entrenamiento**
    
 -Implementación de modelos supervisados:
 -Decision Tree Learner
@@ -49,7 +49,7 @@ La detección temprana de sitios fraudulentos es clave para reducir riesgos y fo
 -Naive Bayes Learner
 -Logistic Regression Learner
 
-5.4. Evaluación de Modelos
+**5.4. Evaluación de Modelos**
 
 Comparación mediante métricas:
 -Accuracy
@@ -91,7 +91,9 @@ Web_Traffic, Page_Rank, Google_Index, Links_pointing_to_page
 Modelo con mejor rendimiento:
 **XGBoost Tree Ensemble, con AUC de 0.949 y F1-score de 0.8669**
 
-**IX. Matriz de confusión para análisis de errores.**
+**IX. Error global analysis**
+
+**9.1. Confusion matrix for error analysis.**
 
 | Modelo                  |  TP  |  TN  |  FP  |  FN  | 
 | ----------------------- | -----| -----| -----| -----| 
@@ -101,7 +103,7 @@ Modelo con mejor rendimiento:
 | Logistic Regression     | 2102 | 3064 | 307  | 844  |
 | Naive Bayes             | 2241 | 1815 | 1556 | 705  | 
 
-**X. FPR (False Positive Rate)**
+**9.2. FPR (False Positive Rate)**
 
 Formula: FPR = FP / FP + TN 
 
@@ -113,7 +115,7 @@ Formula: FPR = FP / FP + TN
 | Logistic Regression     | 0.0910 | 0.7135 |
 | Naive Bayes             | 0.4615 | 0.7607 |
 
-**XI. Análisis de errores**
+**9.3. Error analysis**
 
 Formula: Error global = 1 − Accuracy
 Clasificaciones incorrectas = FP + FN
@@ -126,16 +128,16 @@ Clasificaciones incorrectas = FP + FN
 | Logistic Regression  |                         1151 |       18.22% |                     5166 |
 | Naive Bayes          |                         2261 |       35.79% |                     4056 |
 
-**XII. Interpretabilidad y análisis global**
+**X. Interpretability and global analysis**
 
-**12.1 Modelo seleccionado para el análisis de interpretabilidad**
+**10.1 Modelo seleccionado para el análisis de interpretabilidad**
 
 Para el análisis de interpretabilidad se seleccionó XGBoost, debido a que presentó el mejor desempeño global entre los modelos evaluados, considerando las métricas de Accuracy, Precision, Recall, F1-score, AUC y Cohen's Kappa.
 
 Por lo tanto, las técnicas de interpretabilidad global se aplicaron tomando como referencia el comportamiento predictivo de XGBoost. La importancia interna de características de XGBoost se utilizó como punto de comparación frente a métodos independientes de interpretabilidad, incluyendo Permutation Feature Importance (PFI) y modelos surrogate.
 
 
-XGBoost Feature Importance
+**10.1.1 XGBoost Feature Importance**
 
 | Rank | Feature        | Importance |
 | ---: | -------------- | ---------: |
@@ -151,11 +153,11 @@ XGBoost Feature Importance
 |   10 | Iframe         |      2.042 |
 
 
-**12.2. Surrogate Models**
+**10.2. Surrogate Models**
 
 Se utilizaron modelos surrogate para aproximar el comportamiento del modelo seleccionado y proporcionar perspectivas adicionales sobre la importancia global de las variables. Se emplearon un Generalized Linear Model (GLM) y un Random Forest como modelos surrogate.
 
-**12.2.1 Generalized Linear Model (GLM)**
+**10.2.1 Generalized Linear Model (GLM)**
 
 Para el GLM, la importancia de cada variable se obtuvo mediante el valor absoluto de su coeficiente:
 
@@ -175,7 +177,7 @@ GLM_Absolute_Importance = abs(GLM Coefficient)
 | Submitting_to_email        |           0.483 |                   0.483  |
 | Page_Rank                  |           0.408 |                   0.408  |
 
-**12.2.2 Surrogate Random Forest**
+**10.2.2 Surrogate Random Forest**
 
 Para el Random Forest, se utilizó la medida de RF Global Importance proporcionada por el análisis de Global Feature Importance.
 
@@ -193,7 +195,7 @@ Para el Random Forest, se utilizó la medida de RF Global Importance proporciona
 |   10 | Have_At                     |     0.5118 |
 
 
-**12.3 Permutation Feature Importance (PFI)**
+**10.3 Permutation Feature Importance (PFI)**
 
 
 | Rank | Feature                  | Mean Accuracy Diff (10 Perm) | Std. Dev. Accuracy Diff (10 Perm) | Mean Accuracy Diff (30 Perm) | Std. Dev. Accuracy Diff (30 Perm) |
@@ -213,7 +215,7 @@ Para el Random Forest, se utilizó la medida de RF Global Importance proporciona
 El PFI se calculó utilizando la precisión como métrica de evaluación con 10 y 30 permutaciones. La diferencia media de precisión representa el cambio promedio en la precisión del modelo después de la permutación de características, mientras que la desviación estándar refleja la variabilidad de la estimación entre permutaciones. La configuración de 30 permutaciones se utilizó como estimación final.
 
 
-**12.4 Global Feature Importance y comparación con XGBoost**
+**10.4 Global Feature Importance: Comparison of methods**
 
 La importancia de variables obtenida directamente de XGBoost se utilizó como referencia para contrastar los resultados obtenidos mediante PFI y los modelos surrogate. Debido a que cada método emplea una escala de importancia diferente, la comparación se realizó principalmente mediante el ranking y la presencia de variables entre los Top 10, y no mediante la comparación directa de los valores absolutos de importancia.
 
@@ -242,7 +244,7 @@ La importancia de variables obtenida directamente de XGBoost se utilizó como re
 | Abnormal_URL               |           29 |       21 |        8 |      21 |         
 
 
-**12.5 Consistencia de variables**
+**10.5 Variable consistency**
 
 Identificación de las 10 variables con mayor influencia global.
 
@@ -262,7 +264,7 @@ Identificación de las 10 variables con mayor influencia global.
 Las variables Prefix_Suffix y Have_At se encuentran entre las diez variables más importantes en los cuatro métodos evaluados, mientras que URL_Length, SSLFinal_State, URL_of_Anchor, Iframe y Web_Traffic presentan una alta consistencia al aparecer entre los principales atributos identificados por tres de los cuatro métodos.
 
 
-XIII. Visualización y Comparativas
+**XI. Visualization and Comparisons**
 
 -Curvas ROC superpuestas para todos los modelos.
 -Matriz de confusión para análisis de errores.
@@ -270,7 +272,7 @@ XIII. Visualización y Comparativas
 -Gráficos interactivos (Pie Chart, Bar Chart, ROC Curve) en KNIME.
 -Feature Importance para interpretar las variables más influyentes.
 
-XIV . Conclusión y Reflexión Final
+**XII . Conclusion and Final Reflection**
 
 -La Inteligencia Artificial se consolida como un aliado estratégico en la detección de amenazas digitales.
 -Este proyecto demuestra que: Los modelos supervisados permiten una detección precisa de sitios maliciosos.
