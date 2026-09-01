@@ -133,18 +133,18 @@ XII. Interpretabilidad y análisis global
 12.1 Permutation Feature Importance (PFI)
 
 
-| Rank | Feature            | Mean Accuracy Diff (10 Perm) | Std. Dev. Accuracy Diff (10 Perm) | Mean Accuracy Diff (30 Perm | Std. Dev. Accuracy Diff (30 Perm) |
-| ---: | ------------------ | --------------------------:  | -------------------------------:  | --------------------------: | -------------------------------:  |
-|    1 |   URL_of_Anchor    |                    0.16810   |                         0.00352   |                   0.16777   |                         0.00351   |
-|    2 |   SSLFinal_State   |                    0.11988   |                         0.00359   |                   0.12049   |                          0.00282  |
-|    3 |   URL_Length       |                    0.11492   |                         0.00489   |                   0.11580   |                         0.00454   |
-|    4 |   Iframe           |                    0.07560   |                         0.00388   |                   0.07607   |                         0.00378   |
-|    5 |   Web_Traffic      |                    0.03902   |                         0.00238   |                   0.03914   |                         0.00223   |
-|    6 |   Mouse_Over       |                    0.03696   |                         0.00297   |                   0.03772   |                         0.00276   |
-|    7 |   Favicon          |                    0.00098   |                         0.00068   |                   0.00080   |                         0.00069   |
-|    8 |   Redirect         |                    0.00045   |                         0.00020   |                   0.00040   |                         0.00034   | 
-|    9 |   PopupWindow      |                   -0.00044   |                         0.00050   |                  -0.00052   |                         0.00064   |
-|   10 |   Right_Click      |                  -0.000015   |                         0.00005   |                 -0.000015   |                         0.00006   |
+| Rank | Feature            | Mean Accuracy Diff (10 Perm) | Std. Dev. Accuracy Diff (10 Perm) | Mean Accuracy Diff (30 Perm) | Std. Dev. Accuracy Diff (30 Perm) |
+| ---: | ------------------ | --------------------------:  | -------------------------------:  | --------------------------:  | -------------------------------:  |
+|    1 |   URL_of_Anchor    |                    0.16810   |                         0.00352   |                    0.16777   |                         0.00351   |
+|    2 |   SSLFinal_State   |                    0.11988   |                         0.00359   |                    0.12049   |                         0.00282   |
+|    3 |   URL_Length       |                    0.11492   |                         0.00489   |                    0.11580   |                         0.00454   |
+|    4 |   Iframe           |                    0.07560   |                         0.00388   |                    0.07607   |                         0.00378   |
+|    5 |   Web_Traffic      |                    0.03902   |                         0.00238   |                    0.03914   |                         0.00223   |
+|    6 |   Mouse_Over       |                    0.03696   |                         0.00297   |                    0.03772   |                         0.00276   |
+|    7 |   Favicon          |                    0.00098   |                         0.00068   |                    0.00080   |                         0.00069   |
+|    8 |   Redirect         |                    0.00045   |                         0.00020   |                    0.00040   |                         0.00034   | 
+|    9 |   PopupWindow      |                   -0.00044   |                         0.00050   |                   -0.00052   |                         0.00064   |
+|   10 |   Right_Click      |                  -0.000015   |                         0.00005   |                  -0.000015   |                         0.00006   |
 
 
 Interpretación: La diferencia media de precisión representa la disminución promedio en la precisión del modelo tras permutar aleatoriamente una característica. Valores más altos indican una mayor contribución al rendimiento predictivo. La desviación estándar refleja la variabilidad de la estimación de importancia entre las permutaciones.
@@ -160,18 +160,18 @@ Formula: GLM_Absolute_Importance = abs(GLM Coefficient)
 GLM Coefficient → indica dirección y magnitud del efecto.
 GLM_Absolute_Importance → elimina el signo y conserva la magnitud.
 
-| Feature        | GLM Coefficient | GLM_Absolute_Importance |
-| -------------- | --------------: | ----------------------: |
-| URL_of_Anchor |         -13.729 |                  13.729  |
-| Redirect      |           7.148 |                   7.148  |
-| URL_Length    |          -6.372 |                   6.372  |
-| SSLFinal_State|          -5.760 |                   5.760  |
-| Iframe        |           5.009 |                   5.009  |
-| Favicon       |           4.353 |                   4.353  |
-| Right_Click   |          -4.030 |                   4.030  |
-| Mouse_over    |          -3.695 |                   3.695  |
-| Web_Traffic   |          -3.675 |                   3.675  |
-| popUpWidnow   |          -2.676 |                   2.676  |
+| Feature                    | GLM Coefficient | GLM_Absolute_Importance |
+| ------------------------:  | --------------: | ----------------------: |
+| Redirect                   |           7.148 |                   7.148  |
+| Iframe                     |           5.009 |                   5.009  |
+| Favicon                    |           4.353 |                   4.353  |
+| Shortining_Service         |           2.656 |                   2.656  |
+| Prefix_Suffix              |           1.482 |                   1.482  |
+| double_slash_redirecting   |           1.225 |                   1.225  |
+| Have_At                    |           1.163 |                   1.163  |
+| Abnormal_URL               |           0.792 |                   0.792  |
+| Submitting_to_email        |           0.483 |                   0.483  |
+| Page_Rank                  |           0.408 |                   0.408  |
 
 Surrogate Random Forest
 
@@ -209,6 +209,24 @@ XGBoost Feature Importance
 12.4 Consistencia de variables
 Identificación de las variables con mayor influencia global.
 
+| Feature        | XGBoost Rank | PFI Rank | GLM Rank | RF Rank | Appearances |
+| -------------- | -----------: | -------: | -------: | ------: | ----------: |
+| URL_Length     |            1 |        3 |        3 |       4 |         4/4 |
+| SSLFinal_State |            2 |        2 |        4 |       1 |         4/4 |
+| Prefix_Suffix  |            3 |       NA |        1 |       3 |         4/4 |
+| URL_of_Anchor  |            4 |        1 |        5 |       6 |         4/4 |
+| Have_At        |            5 |        5 |        9 |       2 |         4/4 |
+| SFH            |            6 |        5 |        9 |       2 |         4/4 |
+| Web_Traffic    |            7 |        5 |        9 |       2 |         4/4 |
+| Mouse_over     |            8 |        6 |        9 |       2 |         4/4 |
+| Links_in_tags  |            9 |        11|        9 |       2 |         4/4 |
+| Iframe         |           10 |        4 |        9 |       2 |         4/4 |
+| Favicon        |           26 |        7 |        9 |       2 |         4/4 |
+| Redirect       |           23 |        8 |        9 |       2 |         4/4 |
+| popUpWidnow    |           19 |        9 |        9 |       2 |         4/4 |
+| Right_Click    |           24 |       10 |        9 |       2 |         4/4 |
+
+Para evaluar la consistencia de la importancia global de las características, se compararon las variables identificadas entre las 10 principales según los métodos de interpretabilidad aplicados al modelo. El análisis considera la importancia de las características de XGBoost, la importancia de las características de permutación (PFI), el modelo GLM sustituto y el modelo Random Forest sustituto. Dado que cada método utiliza una escala de importancia diferente, la comparación se basa en la presencia y la clasificación de las variables, en lugar de en los valores de importancia absolutos.
 
 XII. Visualización y Comparativas
 
