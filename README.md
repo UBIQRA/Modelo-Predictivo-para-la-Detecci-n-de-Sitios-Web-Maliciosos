@@ -1,21 +1,21 @@
-I. Modelo Predictivo para la Detección de Sitios Web Maliciosos
+**I. Modelo Predictivo para la Detección de Sitios Web Maliciosos**
 
-Phishing Website Detection Model
+Proyecto: Phishing Website Detection Model
 
-II. Descripción General
+**II. Descripción General**
 
 Este proyecto presenta el desarrollo de un modelo de aprendizaje automático (Machine Learning) diseñado para detectar sitios web de phishing con una precisión superior al 90%.
 La solución utiliza modelos supervisados entrenados con datasets de Kaggle, implementados dentro del entorno sin código de KNIME, lo que permite analizar, entrenar y comparar 
 modelos predictivos de manera visual e intuitiva.
 
-III. Objetivo
+**III. Objetivo**
 
 -Desarrollar e implementar un modelo de Machine Learning capaz de:
 -Detectar sitios web de phishing con ≥90% de precisión.
 -Alcanzar un AUC (Área Bajo la Curva ROC) superior a 0.90.
 -Entrenar y evaluar múltiples algoritmos supervisados en un periodo de 3 meses.
 
-IV. Descripción del Problema
+**IV. Descripción del Problema**
 
 El phishing sigue siendo una de las amenazas cibernéticas más comunes y efectivas, aprovechando la ingeniería social para engañar a los usuarios.
 Muchas PYMEs y emprendedores carecen de herramientas accesibles para detectar estos ataques, lo que provoca:
@@ -26,21 +26,21 @@ Muchas PYMEs y emprendedores carecen de herramientas accesibles para detectar es
 
 La detección temprana de sitios fraudulentos es clave para reducir riesgos y fortalecer la ciberseguridad organizacional.
 
-V. Metodología de Análisis
+**V. Metodología de Análisis**
 
-1. Análisis Exploratorio de Datos (EDA)
+5.1. Análisis Exploratorio de Datos (EDA)
    
 -Identificación de relaciones, anomalías y patrones en los datos.
 -Transformación y normalización para preparar el dataset para modelado.
 
-2. Proceso ETL
+5.2. Proceso ETL
    
 -Limpieza y preparación de datos con nodos KNIME:
 -Missing Value para completar datos faltantes.
 -Number to String para conversión de tipos.
 -Rule Engine para homologar variables de salida.
 
-3. Modelado y Entrenamiento
+5.3. Modelado y Entrenamiento
    
 -Implementación de modelos supervisados:
 -Decision Tree Learner
@@ -49,7 +49,7 @@ V. Metodología de Análisis
 -Naive Bayes Learner
 -Logistic Regression Learner
 
-4. Evaluación de Modelos
+5.4. Evaluación de Modelos
 
 Comparación mediante métricas:
 -Accuracy
@@ -57,7 +57,7 @@ Comparación mediante métricas:
 -Cohen’s Kappa
 -Curva ROC y AUC
 
-VI. Conjunto de Datos
+**VI. Conjunto de Datos**
 
 Se emplearon dos datasets públicos de Kaggle, combinados y homologados:
 -Phishing Websites Data
@@ -67,7 +67,7 @@ Tamaño combinado: 20,000 registros
 Parámetros analizados: 31 variables
 Variable objetivo: Result (1: Legítimo, -1: Phishing)
 
-VII. Características Clave del Dataset
+**VII. Características Clave del Dataset**
 
 -Basadas en URL y dominio:
 Have_IP, URL_Length, Prefix_Suffix, HTTPS_Token, DNS_Record, Domain_Age
@@ -78,9 +78,9 @@ Mouse_over, Right_Click, IFrame, PopUpWindow
 -Basadas en tráfico y motores de búsqueda:
 Web_Traffic, Page_Rank, Google_Index, Links_pointing_to_page
 
-VIII. Resultados de Modelos
+**VIII. Resultados de Modelos**
 
-| Modelo                  | Accuracy   | Precision | Recall | F1-score | AUC       |  Cohen´s Kappa |
+| Modelo                  | Accuracy   | Precision | Recall | F1-score | AUC       |  Cohen's Kappa |
 | ----------------------- | ---------- | --------- | ------ | -------- | --------- | -------------- |
 | **XGBoost**             | **0.8843** | 0.9338    | 0.8092 | 0.8669   | **0.949** |  0.766         |
 | **Decision Tree**       | 0.8798     | 0.9263    | 0.8065 | 0.8623   | 0.938     |  0.757         |
@@ -89,35 +89,33 @@ VIII. Resultados de Modelos
 | **Naive Bayes**         | 0.6421     | 0.5902    | 0.7607 | 0.6647   | 0.696     |  0.294         |
 
 Modelo con mejor rendimiento:
-XGBoost Tree Ensemble, con AUC de 0.949 y F1-score de 0.8669
+**XGBoost Tree Ensemble, con AUC de 0.949 y F1-score de 0.8669**
 
-IX. Matriz de confusión para análisis de errores.
+**IX. Matriz de confusión para análisis de errores.**
 
 | Modelo                  |  TP  |  TN  |  FP  |  FN  | 
 | ----------------------- | -----| -----| -----| -----| 
-| **XGBoost**             | 2384 | 3202 | 169  | 562  | 
-| **Decision Tree**       | 3182 | 2376 | 570  | 189  | 
-| **Random Forest**       | 2254 | 3296 | 75   | 692  |
-| **Logistic Regression** | 2102 | 3064 | 307  | 844  |
-| **Naive Bayes**         | 2241 | 1815 | 1556 | 705  | 
+| XGBoost                 | 2384 | 3202 | 169  | 562  | 
+| Decision Tree           | 3182 | 2376 | 570  | 189  | 
+| Random Forest           | 2254 | 3296 | 75   | 692  |
+| Logistic Regression     | 2102 | 3064 | 307  | 844  |
+| Naive Bayes             | 2241 | 1815 | 1556 | 705  | 
 
-X. FPR (False Positive Rate)
+**X. FPR (False Positive Rate)**
 
 Formula: FPR = FP / FP + TN 
 
 | Modelo                  |   FPR  |  TPR   |
 | ----------------------- | ------ | ----- 
-| **XGBoost**             | 0.0501 | 0.8092 | 
-| **Decision Tree**       | 0.0560 | 0.8065 |
-| **Random Forest**       | 0.0222 | 0.7651 |
-| **Logistic Regression** | 0.0910 | 0.7135 |
-| **Naive Bayes**         | 0.4615 | 0.7607 |
+| XGBoost                 | 0.0501 | 0.8092 | 
+| Decision Tree           | 0.0560 | 0.8065 |
+| Random Forest           | 0.0222 | 0.7651 |
+| Logistic Regression     | 0.0910 | 0.7135 |
+| Naive Bayes             | 0.4615 | 0.7607 |
 
-XI. Análisis de errores
+**XI. Análisis de errores**
 
-Formula: 
-
-Error global = 1 − Accuracy
+Formula: Error global = 1 − Accuracy
 Clasificaciones incorrectas = FP + FN
 
 | Modelo               | Clasificaciones incorrectas  | Error global | Clasificaciones correctas |
@@ -128,9 +126,9 @@ Clasificaciones incorrectas = FP + FN
 | Logistic Regression  |                         1151 |       18.22% |                     5166 |
 | Naive Bayes          |                         2261 |       35.79% |                     4056 |
 
-XII. Interpretabilidad y análisis global
+**XII. Interpretabilidad y análisis global**
 
-12.1 Modelo seleccionado para el análisis de interpretabilidad
+**12.1 Modelo seleccionado para el análisis de interpretabilidad**
 
 Para el análisis de interpretabilidad se seleccionó XGBoost, debido a que presentó el mejor desempeño global entre los modelos evaluados, considerando las métricas de Accuracy, Precision, Recall, F1-score, AUC y Cohen's Kappa.
 
@@ -157,7 +155,7 @@ XGBoost Feature Importance
 
 Se utilizaron modelos surrogate para aproximar el comportamiento del modelo seleccionado y proporcionar perspectivas adicionales sobre la importancia global de las variables. Se emplearon un Generalized Linear Model (GLM) y un Random Forest como modelos surrogate.
 
-**Generalized Linear Model (GLM)**
+**12.2.1 Generalized Linear Model (GLM)**
 
 Para el GLM, la importancia de cada variable se obtuvo mediante el valor absoluto de su coeficiente:
 
@@ -177,7 +175,7 @@ GLM_Absolute_Importance = abs(GLM Coefficient)
 | Submitting_to_email        |           0.483 |                   0.483  |
 | Page_Rank                  |           0.408 |                   0.408  |
 
-**Surrogate Random Forest**
+**12.2.2 Surrogate Random Forest**
 
 Para el Random Forest, se utilizó la medida de RF Global Importance proporcionada por el análisis de Global Feature Importance.
 
@@ -206,7 +204,7 @@ Para el Random Forest, se utilizó la medida de RF Global Importance proporciona
 |    4 |   URL_Length             |                    0.11492   |                         0.00489   |                    0.11580   |                         0.00454   |
 |    5 |   Have_At                |                    0.07684   |                         0.00416   |                    0.07791   |                         0.00386   |
 |    6 |   Iframe                 |                    0.07560   |                         0.00388   |                    0.07607   |                         0.00378   |
-|    7 |   Links_pointing-to_page |                    0.05404   |                         0.00330   |                    0.05560   |                         0.00339   |
+|    7 |   Links_pointing_to_page |                    0.05404   |                         0.00330   |                    0.05560   |                         0.00339   |
 |    8 |   Have_IP                |                    0.04981   |                         0.00363   |                    0.04950   |                         0.00340   |
 |    9 |   Web_Traffic            |                    0.03902   |                         0.00238   |                    0.03914   |                         0.00223   |
 |   10 |   Mouse_Over             |                    0.03696   |                         0.00297   |                    0.03772   |                         0.00276   | 
@@ -246,8 +244,7 @@ La importancia de variables obtenida directamente de XGBoost se utilizó como re
 
 **12.5 Consistencia de variables**
 
-Identificación de las variables con mayor influencia global.
-
+Identificación de las 10 variables con mayor influencia global.
 
 | Feature            | XGBoost | PFI | GLM | RF Surrogate | Appearances |
 | ------------------ | ------: | --: | --: | -----------: | ----------: |
@@ -262,8 +259,8 @@ Identificación de las variables con mayor influencia global.
 | Mouse_over         |       8 |   — |   — |            9 |     2/4     |
 | Links_in_tags      |       9 |   — |   — |            9 |     2/4     |
 
+Las variables Prefix_Suffix y Have_At se encuentran entre las diez variables más importantes en los cuatro métodos evaluados, mientras que URL_Length, SSLFinal_State, URL_of_Anchor, Iframe y Web_Traffic presentan una alta consistencia al aparecer entre los principales atributos identificados por tres de los cuatro métodos.
 
-Para evaluar la consistencia de la importancia global de las características, se compararon las variables identificadas entre las 10 principales según los métodos de interpretabilidad aplicados al modelo. El análisis considera la importancia de las características de XGBoost, la importancia de las características de permutación (PFI), el modelo GLM sustituto y el modelo Random Forest sustituto. Dado que cada método utiliza una escala de importancia diferente, la comparación se basa en la presencia y la clasificación de las variables, en lugar de en los valores de importancia absolutos.
 
 XIII. Visualización y Comparativas
 
