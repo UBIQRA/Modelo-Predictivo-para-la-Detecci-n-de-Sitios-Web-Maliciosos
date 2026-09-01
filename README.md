@@ -80,7 +80,7 @@ Web_Traffic, Page_Rank, Google_Index, Links_pointing_to_page
 
 VIII. Resultados de Modelos
 
-| Modelo                  | Accuracy   | Precision | Recall | F1-score | AUC       |  Choen´s Kappa |
+| Modelo                  | Accuracy   | Precision | Recall | F1-score | AUC       |  Cohen´s Kappa |
 | ----------------------- | ---------- | --------- | ------ | -------- | --------- | -------------- |
 | **XGBoost**             | **0.8843** | 0.9338    | 0.8092 | 0.8669   | **0.949** |  0.766         |
 | **Decision Tree**       | 0.8798     | 0.9263    | 0.8065 | 0.8623   | 0.938     |  0.757         |
@@ -179,7 +179,7 @@ Surrogate Random Forest
 | ---: | -------------- | ---------: |
 |    1 | SSLFinal_State |     2.3372 |
 |    2 | Web_Traffic    |     1.9044 |
-|    3 | URL_of_Anchor  |    1 .8930 |
+|    3 | URL_of_Anchor  |     1.8930 |
 |    4 | URL_Length     |     1.2200 |
 |    5 | Redirect       |        0.4 |
 |    6 | Iframe         |     0.3239 |
