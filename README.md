@@ -210,22 +210,32 @@ XGBoost Feature Importance
 12.4 Consistencia de variables
 Identificación de las variables con mayor influencia global.
 
-| Feature        | XGBoost Rank | PFI Rank | GLM Rank | RF Rank | Appearances |
-| -------------- | -----------: | -------: | -------: | ------: | ----------: |
-| URL_Length     |            1 |        3 |        3 |       4 |         4/4 |
-| SSLFinal_State |            2 |        2 |        4 |       1 |         4/4 |
-| Prefix_Suffix  |            3 |       NA |        1 |       3 |         4/4 |
-| URL_of_Anchor  |            4 |        1 |        5 |       6 |         4/4 |
-| Have_At        |            5 |        5 |        9 |       2 |         4/4 |
-| SFH            |            6 |        5 |        9 |       2 |         4/4 |
-| Web_Traffic    |            7 |        5 |        9 |       2 |         4/4 |
-| Mouse_over     |            8 |        6 |        9 |       2 |         4/4 |
-| Links_in_tags  |            9 |        11|        9 |       2 |         4/4 |
-| Iframe         |           10 |        4 |        9 |       2 |         4/4 |
-| Favicon        |           26 |        7 |        9 |       2 |         4/4 |
-| Redirect       |           23 |        8 |        9 |       2 |         4/4 |
-| popUpWidnow    |           19 |        9 |        9 |       2 |         4/4 |
-| Right_Click    |           24 |       10 |        9 |       2 |         4/4 |
+| Feature                    | XGBoost Rank | PFI Rank | GLM Rank | RF Rank | Appearances |
+| ------------------------:  | -----------: | -------: | -------: | ------: | ----------: |
+| URL_Length                 |            1 |        4 |       29 |       6 |         4/4 |
+| SSLFinal_State             |            2 |        3 |       28 |       1 |         4/4 |
+| Prefix_Suffix              |            3 |        2 |        5 |       4 |         4/4 |
+| URL_of_Anchor              |            4 |        1 |       30 |       3 |         4/4 |
+| Have_At                    |            5 |        5 |        7 |      10 |         4/4 |
+| SFH                        |            6 |       17 |       16 |       8 |         4/4 |
+| Web_Traffic                |            7 |        9 |       25 |       2 |         4/4 |
+| Mouse_over                 |            8 |       10 |       26 |      20 |         4/4 |
+| Links_in_tags              |            9 |       11 |       22 |       9 |         4/4 |
+| Iframe                     |           10 |        6 |        2 |      15 |         4/4 |
+| having_Sub_Domain          |           11 |       15 |       21 |       5 |         4/4 |
+| Shortining_Service         |           12 |       24 |        4 |      23 |         4/4 |
+| Have_IP                    |           14 |        8 |       19 |      16 |         4/4 |
+| Links_pointing_to_page     |           15 |        7 |       23 |      13 |         4/4 |
+| Submitting_to_email        |           18 |       19 |        9 |      30 |         4/4 |
+| Domain_registration_length |           20 |       18 |       14 |       7 |         4/4 |
+| Page_Rank                  |           22 |       20 |       10 |      26 |         4/4 |
+| Redirect                   |           23 |       23 |        1 |      14 |         4/4 |
+| Favicon                    |           26 |       22 |        3 |      27 |         4/4 |
+| double_slash_redirect      |           27 |       25 |        6 |      28 |         4/4 |
+| Abnormal_URL               |           29 |       21 |        8 |      21 |         4/4 |
+
+
+
 
 Para evaluar la consistencia de la importancia global de las características, se compararon las variables identificadas entre las 10 principales según los métodos de interpretabilidad aplicados al modelo. El análisis considera la importancia de las características de XGBoost, la importancia de las características de permutación (PFI), el modelo GLM sustituto y el modelo Random Forest sustituto. Dado que cada método utiliza una escala de importancia diferente, la comparación se basa en la presencia y la clasificación de las variables, en lugar de en los valores de importancia absolutos.
 
