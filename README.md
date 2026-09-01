@@ -1,4 +1,4 @@
-**I. Modelo Predictivo para la Detección de Sitios Web Maliciosos**
+**I. Predictive Model for Detecting Malicious Websites**
 
 Proyecto: Phishing Website Detection Model
 
@@ -8,14 +8,14 @@ Este proyecto presenta el desarrollo de un modelo de aprendizaje automático (Ma
 La solución utiliza modelos supervisados entrenados con datasets de Kaggle, implementados dentro del entorno sin código de KNIME, lo que permite analizar, entrenar y comparar 
 modelos predictivos de manera visual e intuitiva.
 
-**III. Objetivo**
+**III. Target**
 
 -Desarrollar e implementar un modelo de Machine Learning capaz de:
 -Detectar sitios web de phishing con ≥90% de precisión.
 -Alcanzar un AUC (Área Bajo la Curva ROC) superior a 0.90.
 -Entrenar y evaluar múltiples algoritmos supervisados en un periodo de 3 meses.
 
-**IV. Descripción del Problema**
+**IV. Problem Description**
 
 El phishing sigue siendo una de las amenazas cibernéticas más comunes y efectivas, aprovechando la ingeniería social para engañar a los usuarios.
 Muchas PYMEs y emprendedores carecen de herramientas accesibles para detectar estos ataques, lo que provoca:
@@ -26,21 +26,21 @@ Muchas PYMEs y emprendedores carecen de herramientas accesibles para detectar es
 
 La detección temprana de sitios fraudulentos es clave para reducir riesgos y fortalecer la ciberseguridad organizacional.
 
-**V. Metodología de Análisis**
+**V. Analysis Methodology**
 
-**5.1. Análisis Exploratorio de Datos (EDA)**
+**5.1.Exploratory Data Analysis (EDA)**
    
 -Identificación de relaciones, anomalías y patrones en los datos.
 -Transformación y normalización para preparar el dataset para modelado.
 
-**5.2. Proceso ETL**
+**5.2. ETL Process**
    
 -Limpieza y preparación de datos con nodos KNIME:
 -Missing Value para completar datos faltantes.
 -Number to String para conversión de tipos.
 -Rule Engine para homologar variables de salida.
 
-**5.3. Modelado y Entrenamiento**
+**5.3. Modeling and Training**
    
 -Implementación de modelos supervisados:
 -Decision Tree Learner
@@ -49,7 +49,7 @@ La detección temprana de sitios fraudulentos es clave para reducir riesgos y fo
 -Naive Bayes Learner
 -Logistic Regression Learner
 
-**5.4. Evaluación de Modelos**
+**5.4. Model Evaluation**
 
 Comparación mediante métricas:
 -Accuracy
@@ -57,7 +57,7 @@ Comparación mediante métricas:
 -Cohen’s Kappa
 -Curva ROC y AUC
 
-**VI. Conjunto de Datos**
+**VI. Dataset**
 
 Se emplearon dos datasets públicos de Kaggle, combinados y homologados:
 -Phishing Websites Data
@@ -67,7 +67,7 @@ Tamaño combinado: 20,000 registros
 Parámetros analizados: 31 variables
 Variable objetivo: Result (1: Legítimo, -1: Phishing)
 
-**VII. Características Clave del Dataset**
+**VII. Key Characteristics of the Dataset**
 
 -Basadas en URL y dominio:
 Have_IP, URL_Length, Prefix_Suffix, HTTPS_Token, DNS_Record, Domain_Age
@@ -78,7 +78,7 @@ Mouse_over, Right_Click, IFrame, PopUpWindow
 -Basadas en tráfico y motores de búsqueda:
 Web_Traffic, Page_Rank, Google_Index, Links_pointing_to_page
 
-**VIII. Resultados de Modelos**
+**VIII. Model Results**
 
 | Modelo                  | Accuracy   | Precision | Recall | F1-score | AUC       |  Cohen's Kappa |
 | ----------------------- | ---------- | --------- | ------ | -------- | --------- | -------------- |
@@ -215,7 +215,7 @@ Para el Random Forest, se utilizó la medida de RF Global Importance proporciona
 El PFI se calculó utilizando la precisión como métrica de evaluación con 10 y 30 permutaciones. La diferencia media de precisión representa el cambio promedio en la precisión del modelo después de la permutación de características, mientras que la desviación estándar refleja la variabilidad de la estimación entre permutaciones. La configuración de 30 permutaciones se utilizó como estimación final.
 
 
-**10.4 Global Feature Importance: Comparison of methods**
+**10.4 Comparison of Feature Importance Across Methods**
 
 La importancia de variables obtenida directamente de XGBoost se utilizó como referencia para contrastar los resultados obtenidos mediante PFI y los modelos surrogate. Debido a que cada método emplea una escala de importancia diferente, la comparación se realizó principalmente mediante el ranking y la presencia de variables entre los Top 10, y no mediante la comparación directa de los valores absolutos de importancia.
 
