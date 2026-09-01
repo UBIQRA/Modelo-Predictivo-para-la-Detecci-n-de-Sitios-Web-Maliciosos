@@ -246,7 +246,7 @@ La importancia de variables obtenida directamente de XGBoost se utilizó como re
 
 **10.5 Variable consistency**
 
-Identificación de las 10 variables con mayor influencia global.
+La identificación de características se clasificó sistemáticamente entre las 10 mejores en los cuatro métodos de interpretabilidad.
 
 | Feature            | XGBoost | PFI | GLM | RF Surrogate | Appearances |
 | ------------------ | ------: | --: | --: | -----------: | ----------: |
