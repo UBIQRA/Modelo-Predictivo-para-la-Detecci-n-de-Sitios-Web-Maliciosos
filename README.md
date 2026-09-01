@@ -168,7 +168,29 @@ GLM_Absolute_Importance → elimina el signo y conserva la magnitud.
 
 Surrogate Decision Tree
 Surrogate Random Forest
+
+Permutation Feature Importance (PFI)
+
+
+| Rank | Feature            | Mean Accuracy Diff | Std. Dev. Accuracy Diff |
+| ---: | ------------------ | -----------------: | ----------------------: |
+|    1 | **URL_of_Anchor**  |        0.16810 |                     0.00352 |
+|    2 | **SSLFinal_State** |        0.11988 |                     0.00359 |
+|    3 | **URL_Length**     |        0.11492 |                     0.00489 |
+|    4 | **Iframe**         |        0.07560 |                     0.00388 |
+|    5 | **Web_Traffic**    |        0.03902 |                     0.00238 |
+|    6 | **Mouse_Over**     |        0.03696 |                     0.00297 |
+|    7 | **Favicon**        |        0.00098 |                     0.00068 |
+|    8 | **Redirect**       |        0.00045 |                     0.00020 |
+|    9 | **PopupWindow**    |       -0.00044 |                     0.00050 |
+|   10 | **Right_Click**    |      -0.000015 |                     0.00005 |
+
+
+Interpretación: La diferencia media de precisión representa la disminución promedio en la precisión del modelo tras permutar aleatoriamente una característica. Valores más altos indican una mayor contribución al rendimiento predictivo. La desviación estándar refleja la variabilidad de la estimación de importancia entre las permutaciones.
+
+
 Comparación de la fidelidad de los modelos surrogate.
+
 Identificación de las variables con mayor influencia global.
 
 
