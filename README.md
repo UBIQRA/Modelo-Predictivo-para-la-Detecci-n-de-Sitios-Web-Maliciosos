@@ -130,7 +130,72 @@ Clasificaciones incorrectas = FP + FN
 
 XII. Interpretabilidad y análisis global
 
-12.1 Permutation Feature Importance (PFI)
+12.1 Modelo seleccionado para el análisis de interpretabilidad
+
+Para el análisis de interpretabilidad se seleccionó XGBoost, debido a que presentó el mejor desempeño global entre los modelos evaluados, considerando las métricas de Accuracy, Precision, Recall, F1-score, AUC y Cohen's Kappa.
+
+Por lo tanto, las técnicas de interpretabilidad global se aplicaron tomando como referencia el comportamiento predictivo de XGBoost. La importancia interna de características de XGBoost se utilizó como punto de comparación frente a métodos independientes de interpretabilidad, incluyendo Permutation Feature Importance (PFI) y modelos surrogate.
+
+
+XGBoost Feature Importance
+
+| Rank | Feature        | Importance |
+| ---: | -------------- | ---------: |
+|    1 | URL_Length     |     56.013 |
+|    2 | SSLFinal_State |     49.365 |
+|    3 | Prefix_Suffix  |     20.744 |
+|    4 | URL_of_Anchor  |     19.981 |
+|    5 | Have_At        |     13.856 |
+|    6 | SFH            |      3.422 |
+|    7 | Web_Traffic    |      3.268 |
+|    8 | Mouse_over     |      3.070 |
+|    9 | Links_in_tags  |      2.131 |
+|   10 | Iframe         |      2.042 |
+
+
+**12.2. Surrogate Models**
+
+Se utilizaron modelos surrogate para aproximar el comportamiento del modelo seleccionado y proporcionar perspectivas adicionales sobre la importancia global de las variables. Se emplearon un Generalized Linear Model (GLM) y un Random Forest como modelos surrogate.
+
+**Generalized Linear Model (GLM)**
+
+Para el GLM, la importancia de cada variable se obtuvo mediante el valor absoluto de su coeficiente:
+
+GLM_Absolute_Importance = abs(GLM Coefficient)
+
+
+| Feature                    | GLM Coefficient | GLM_Absolute_Importance |
+| ------------------------:  | --------------: | ----------------------: |
+| Redirect                   |           7.148 |                   7.148  |
+| Iframe                     |           5.009 |                   5.009  |
+| Favicon                    |           4.353 |                   4.353  |
+| Shortining_Service         |           2.656 |                   2.656  |
+| Prefix_Suffix              |           1.482 |                   1.482  |
+| double_slash_redirecting   |           1.225 |                   1.225  |
+| Have_At                    |           1.163 |                   1.163  |
+| Abnormal_URL               |           0.792 |                   0.792  |
+| Submitting_to_email        |           0.483 |                   0.483  |
+| Page_Rank                  |           0.408 |                   0.408  |
+
+**Surrogate Random Forest**
+
+Para el Random Forest, se utilizó la medida de RF Global Importance proporcionada por el análisis de Global Feature Importance.
+
+| Rank | Feature                     | Importance |
+| ---: | --------------------------: | ---------: |
+|    1 | SSLFinal_State              |     2.3372 |
+|    2 | Web_Traffic                 |     1.9044 |
+|    3 | URL_of_Anchor               |     1.8930 |
+|    4 | Prefix_Suffix               |     1.5325 |
+|    5 | having_Sub_Domain           |     1.3329 |
+|    6 | URL_Length                  |     1.2200 |
+|    7 | Domain_registration_length  |     0.7755 |
+|    8 | SFH                         |     0.7262 |
+|    9 | Links_in_tags               |     0.6955 |
+|   10 | Have_At                     |     0.5118 |
+
+
+**12.3 Permutation Feature Importance (PFI)**
 
 
 | Rank | Feature                  | Mean Accuracy Diff (10 Perm) | Std. Dev. Accuracy Diff (10 Perm) | Mean Accuracy Diff (30 Perm) | Std. Dev. Accuracy Diff (30 Perm) |
@@ -147,99 +212,60 @@ XII. Interpretabilidad y análisis global
 |   10 |   Mouse_Over             |                    0.03696   |                         0.00297   |                    0.03772   |                         0.00276   | 
 
 
-Interpretación: La diferencia media de precisión representa la disminución promedio en la precisión del modelo tras permutar aleatoriamente una característica. Valores más altos indican una mayor contribución al rendimiento predictivo. La desviación estándar refleja la variabilidad de la estimación de importancia entre las permutaciones.
-
 El PFI se calculó utilizando la precisión como métrica de evaluación con 10 y 30 permutaciones. La diferencia media de precisión representa el cambio promedio en la precisión del modelo después de la permutación de características, mientras que la desviación estándar refleja la variabilidad de la estimación entre permutaciones. La configuración de 30 permutaciones se utilizó como estimación final.
 
-12.2. Surrogate Models
 
-Surrogate GLM 
+**12.4 Global Feature Importance y comparación con XGBoost**
 
-Formula: GLM_Absolute_Importance = abs(GLM Coefficient)
+La importancia de variables obtenida directamente de XGBoost se utilizó como referencia para contrastar los resultados obtenidos mediante PFI y los modelos surrogate. Debido a que cada método emplea una escala de importancia diferente, la comparación se realizó principalmente mediante el ranking y la presencia de variables entre los Top 10, y no mediante la comparación directa de los valores absolutos de importancia.
 
-GLM Coefficient → indica dirección y magnitud del efecto.
-GLM_Absolute_Importance → elimina el signo y conserva la magnitud.
-
-| Feature                    | GLM Coefficient | GLM_Absolute_Importance |
-| ------------------------:  | --------------: | ----------------------: |
-| Redirect                   |           7.148 |                   7.148  |
-| Iframe                     |           5.009 |                   5.009  |
-| Favicon                    |           4.353 |                   4.353  |
-| Shortining_Service         |           2.656 |                   2.656  |
-| Prefix_Suffix              |           1.482 |                   1.482  |
-| double_slash_redirecting   |           1.225 |                   1.225  |
-| Have_At                    |           1.163 |                   1.163  |
-| Abnormal_URL               |           0.792 |                   0.792  |
-| Submitting_to_email        |           0.483 |                   0.483  |
-| Page_Rank                  |           0.408 |                   0.408  |
-
-Surrogate Random Forest
-
-| Rank | Feature                     | Importance |
-| ---: | --------------------------: | ---------: |
-|    1 | SSLFinal_State              |     2.3372 |
-|    2 | Web_Traffic                 |     1.9044 |
-|    3 | URL_of_Anchor               |     1.8930 |
-|    4 | Prefix_Suffix               |     1.5325 |
-|    5 | having_Sub_Domain           |     1.3329 |
-|    6 | URL_Length                  |     1.2200 |
-|    7 | Domain_registration_length  |     0.7755 |
-|    8 | SFH                         |     0.7262 |
-|    9 | Links_in_tags               |     0.6955 |
-|   10 | Have_At                     |     0.5118 |
+| Feature                    | XGBoost Rank | PFI Rank | GLM Rank | RF Rank | 
+| ------------------------:  | -----------: | -------: | -------: | ------: | 
+| URL_Length                 |            1 |        4 |       29 |       6 |        
+| SSLFinal_State             |            2 |        3 |       28 |       1 |         
+| Prefix_Suffix              |            3 |        2 |        5 |       4 |         
+| URL_of_Anchor              |            4 |        1 |       30 |       3 |       
+| Have_At                    |            5 |        5 |        7 |      10 |         
+| SFH                        |            6 |       17 |       16 |       8 |         
+| Web_Traffic                |            7 |        9 |       25 |       2 |         
+| Mouse_over                 |            8 |       10 |       26 |      20 |        
+| Links_in_tags              |            9 |       11 |       22 |       9 |         
+| Iframe                     |           10 |        6 |        2 |      15 |       
+| having_Sub_Domain          |           11 |       15 |       21 |       5 |        
+| Shortining_Service         |           12 |       24 |        4 |      23 |        
+| Have_IP                    |           14 |        8 |       19 |      16 |        
+| Links_pointing_to_page     |           15 |        7 |       23 |      13 |         
+| Submitting_to_email        |           18 |       19 |        9 |      30 |        
+| Domain_registration_length |           20 |       18 |       14 |       7 |        
+| Page_Rank                  |           22 |       20 |       10 |      26 |         
+| Redirect                   |           23 |       23 |        1 |      14 |         
+| Favicon                    |           26 |       22 |        3 |      27 |         
+| double_slash_redirect      |           27 |       25 |        6 |      28 |        
+| Abnormal_URL               |           29 |       21 |        8 |      21 |         
 
 
-12.3. Global Feature Importance
+**12.5 Consistencia de variables**
 
-XGBoost Feature Importance
-
-| Rank | Feature       | Importance |
-| ---: | -------------- | ---------: |
-|    1 | URL_Length     |     56.013 |
-|    2 | SSLFinal_State |     49.365 |
-|    3 | Prefix_Suffix  |     20.744 |
-|    4 | URL_of_Anchor  |     19.981 |
-|    5 | Have_At        |     13.856 |
-|    6 | SFH            |      3.422 |
-|    7 | Web_Traffic    |      3.268 |
-|    8 | Mouse_over     |      3.070 |
-|    9 | Links_in_tags  |      2.131 |
-|   10 | Iframe         |      2.042 |
-
-
-12.4 Consistencia de variables
 Identificación de las variables con mayor influencia global.
 
-| Feature                    | XGBoost Rank | PFI Rank | GLM Rank | RF Rank | Appearances |
-| ------------------------:  | -----------: | -------: | -------: | ------: | ----------: |
-| URL_Length                 |            1 |        4 |       29 |       6 |         4/4 |
-| SSLFinal_State             |            2 |        3 |       28 |       1 |         4/4 |
-| Prefix_Suffix              |            3 |        2 |        5 |       4 |         4/4 |
-| URL_of_Anchor              |            4 |        1 |       30 |       3 |         4/4 |
-| Have_At                    |            5 |        5 |        7 |      10 |         4/4 |
-| SFH                        |            6 |       17 |       16 |       8 |         4/4 |
-| Web_Traffic                |            7 |        9 |       25 |       2 |         4/4 |
-| Mouse_over                 |            8 |       10 |       26 |      20 |         4/4 |
-| Links_in_tags              |            9 |       11 |       22 |       9 |         4/4 |
-| Iframe                     |           10 |        6 |        2 |      15 |         4/4 |
-| having_Sub_Domain          |           11 |       15 |       21 |       5 |         4/4 |
-| Shortining_Service         |           12 |       24 |        4 |      23 |         4/4 |
-| Have_IP                    |           14 |        8 |       19 |      16 |         4/4 |
-| Links_pointing_to_page     |           15 |        7 |       23 |      13 |         4/4 |
-| Submitting_to_email        |           18 |       19 |        9 |      30 |         4/4 |
-| Domain_registration_length |           20 |       18 |       14 |       7 |         4/4 |
-| Page_Rank                  |           22 |       20 |       10 |      26 |         4/4 |
-| Redirect                   |           23 |       23 |        1 |      14 |         4/4 |
-| Favicon                    |           26 |       22 |        3 |      27 |         4/4 |
-| double_slash_redirect      |           27 |       25 |        6 |      28 |         4/4 |
-| Abnormal_URL               |           29 |       21 |        8 |      21 |         4/4 |
 
-
+| Feature            | XGBoost | PFI | GLM | RF Surrogate | Appearances |
+| ------------------ | ------: | --: | --: | -----------: | ----------: |
+| Prefix_Suffix      |       3 |   2 |   5 |            4 |     4/4     |
+| Have_At            |       5 |   5 |   7 |           10 |     4/4     |
+| URL_Length         |       1 |   4 |   — |            6 |     3/4     |
+| SSLFinal_State     |       2 |   3 |   — |            1 |     3/4     |
+| URL_of_Anchor      |       4 |   1 |   — |            3 |     3/4     |
+| Iframe             |      10 |   6 |   2 |            — |     3/4     |
+| Web_Traffic        |       7 |   9 |   — |            2 |     3/4     |
+| SFH                |       6 |   — |   — |            8 |     2/4     |
+| Mouse_over         |       8 |   — |   — |            9 |     2/4     |
+| Links_in_tags      |       9 |   — |   — |            9 |     2/4     |
 
 
 Para evaluar la consistencia de la importancia global de las características, se compararon las variables identificadas entre las 10 principales según los métodos de interpretabilidad aplicados al modelo. El análisis considera la importancia de las características de XGBoost, la importancia de las características de permutación (PFI), el modelo GLM sustituto y el modelo Random Forest sustituto. Dado que cada método utiliza una escala de importancia diferente, la comparación se basa en la presencia y la clasificación de las variables, en lugar de en los valores de importancia absolutos.
 
-XII. Visualización y Comparativas
+XIII. Visualización y Comparativas
 
 -Curvas ROC superpuestas para todos los modelos.
 -Matriz de confusión para análisis de errores.
@@ -247,7 +273,7 @@ XII. Visualización y Comparativas
 -Gráficos interactivos (Pie Chart, Bar Chart, ROC Curve) en KNIME.
 -Feature Importance para interpretar las variables más influyentes.
 
-XIII . Conclusión y Reflexión Final
+XIV . Conclusión y Reflexión Final
 
 -La Inteligencia Artificial se consolida como un aliado estratégico en la detección de amenazas digitales.
 -Este proyecto demuestra que: Los modelos supervisados permiten una detección precisa de sitios maliciosos.
