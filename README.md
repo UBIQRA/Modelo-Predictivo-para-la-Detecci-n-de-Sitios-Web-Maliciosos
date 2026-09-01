@@ -130,23 +130,30 @@ Clasificaciones incorrectas = FP + FN
 
 XII. Interpretabilidad y análisis global
 
-1. XGBoost Feature Importance
-
-| Rank | Variable       | Importance |
-| ---: | -------------- | ---------: |
-|    1 | URL_Length     |     56.013 |
-|    2 | SSLFinal_State |     49.365 |
-|    3 | Prefix_Suffix  |     20.744 |
-|    4 | URL_of_Anchor  |     19.981 |
-|    5 | Have_At        |     13.856 |
-|    6 | SFH            |      3.422 |
-|    7 | Web_Traffic    |      3.268 |
-|    8 | Mouse_over     |      3.070 |
-|    9 | Links_in_tags  |      2.131 |
-|   10 | Iframe         |      2.042 |
+12.1 Permutation Feature Importance (PFI)
 
 
-3. Surrogate GLM
+| Rank | Feature            | Mean Accuracy Diff (10 Perm) | Std. Dev. Accuracy Diff (10 Perm) | Mean Accuracy Diff (30 Perm | Std. Dev. Accuracy Diff (30 Perm) |
+| ---: | ------------------ | --------------------------:  | -------------------------------:  | --------------------------: | -------------------------------:  |
+|    1 | **URL_of_Anchor**  |                    0.16810   |                         0.00352   |                   0.16777   |                         0.00351   |
+|    2 | **SSLFinal_State** |                    0.11988   |                         0.00359   |                   0.12049   |                          0.00282  |
+|    3 | **URL_Length**     |                    0.11492   |                         0.00489   |                   0.11580   |                         0.00454   |
+|    4 | **Iframe**         |                    0.07560   |                         0.00388   |                   0.07607   |                         0.00378   |
+|    5 | **Web_Traffic**    |                    0.03902   |                         0.00238   |                   0.03914   |                         0.00223   |
+|    6 | **Mouse_Over**     |                    0.03696   |                         0.00297   |                   0.03772   |                         0.00276   |
+|    7 | **Favicon**        |                    0.00098   |                         0.00068   |                   0.00080   |                         0.00069   |
+|    8 | **Redirect**       |                    0.00045   |                         0.00020   |                   0.00040   |                         0.00034   | 
+|    9 | **PopupWindow**    |                   -0.00044   |                         0.00050   |                  -0.00052   |                         0.00064   |
+|   10 | **Right_Click**    |                  -0.000015   |                         0.00005   |                 -0.000015   |                         0.00006   |
+
+
+Interpretación: La diferencia media de precisión representa la disminución promedio en la precisión del modelo tras permutar aleatoriamente una característica. Valores más altos indican una mayor contribución al rendimiento predictivo. La desviación estándar refleja la variabilidad de la estimación de importancia entre las permutaciones.
+
+El PFI se calculó utilizando la precisión como métrica de evaluación con 10 y 30 permutaciones. La diferencia media de precisión representa el cambio promedio en la precisión del modelo después de la permutación de características, mientras que la desviación estándar refleja la variabilidad de la estimación entre permutaciones. La configuración de 30 permutaciones se utilizó como estimación final.
+
+12.2. Surrogate Models
+
+Surrogate GLM 
 
 Formula: GLM_Absolute_Importance = abs(GLM Coefficient)
 
@@ -166,31 +173,28 @@ GLM_Absolute_Importance → elimina el signo y conserva la magnitud.
 | Web_Traffic   |          -3.675 |                   3.675  |
 | popUpWidnow   |          -2.676 |                   2.676  |
 
-Surrogate Decision Tree
 Surrogate Random Forest
 
-Permutation Feature Importance (PFI)
+
+12.3. Global Feature Importance
+
+XGBoost Feature Importance
+
+| Rank | Variable       | Importance |
+| ---: | -------------- | ---------: |
+|    1 | URL_Length     |     56.013 |
+|    2 | SSLFinal_State |     49.365 |
+|    3 | Prefix_Suffix  |     20.744 |
+|    4 | URL_of_Anchor  |     19.981 |
+|    5 | Have_At        |     13.856 |
+|    6 | SFH            |      3.422 |
+|    7 | Web_Traffic    |      3.268 |
+|    8 | Mouse_over     |      3.070 |
+|    9 | Links_in_tags  |      2.131 |
+|   10 | Iframe         |      2.042 |
 
 
-| Rank | Feature            | Mean Accuracy Diff | Std. Dev. Accuracy Diff |
-| ---: | ------------------ | -----------------: | ----------------------: |
-|    1 | **URL_of_Anchor**  |        0.16810 |                     0.00352 |
-|    2 | **SSLFinal_State** |        0.11988 |                     0.00359 |
-|    3 | **URL_Length**     |        0.11492 |                     0.00489 |
-|    4 | **Iframe**         |        0.07560 |                     0.00388 |
-|    5 | **Web_Traffic**    |        0.03902 |                     0.00238 |
-|    6 | **Mouse_Over**     |        0.03696 |                     0.00297 |
-|    7 | **Favicon**        |        0.00098 |                     0.00068 |
-|    8 | **Redirect**       |        0.00045 |                     0.00020 |
-|    9 | **PopupWindow**    |       -0.00044 |                     0.00050 |
-|   10 | **Right_Click**    |      -0.000015 |                     0.00005 |
-
-
-Interpretación: La diferencia media de precisión representa la disminución promedio en la precisión del modelo tras permutar aleatoriamente una característica. Valores más altos indican una mayor contribución al rendimiento predictivo. La desviación estándar refleja la variabilidad de la estimación de importancia entre las permutaciones.
-
-
-Comparación de la fidelidad de los modelos surrogate.
-
+12.4 Consistencia de variables
 Identificación de las variables con mayor influencia global.
 
 
