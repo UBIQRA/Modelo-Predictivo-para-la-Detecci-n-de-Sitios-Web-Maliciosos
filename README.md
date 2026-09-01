@@ -135,16 +135,16 @@ XII. Interpretabilidad y análisis global
 
 | Rank | Feature            | Mean Accuracy Diff (10 Perm) | Std. Dev. Accuracy Diff (10 Perm) | Mean Accuracy Diff (30 Perm | Std. Dev. Accuracy Diff (30 Perm) |
 | ---: | ------------------ | --------------------------:  | -------------------------------:  | --------------------------: | -------------------------------:  |
-|    1 | **URL_of_Anchor**  |                    0.16810   |                         0.00352   |                   0.16777   |                         0.00351   |
-|    2 | **SSLFinal_State** |                    0.11988   |                         0.00359   |                   0.12049   |                          0.00282  |
-|    3 | **URL_Length**     |                    0.11492   |                         0.00489   |                   0.11580   |                         0.00454   |
-|    4 | **Iframe**         |                    0.07560   |                         0.00388   |                   0.07607   |                         0.00378   |
-|    5 | **Web_Traffic**    |                    0.03902   |                         0.00238   |                   0.03914   |                         0.00223   |
-|    6 | **Mouse_Over**     |                    0.03696   |                         0.00297   |                   0.03772   |                         0.00276   |
-|    7 | **Favicon**        |                    0.00098   |                         0.00068   |                   0.00080   |                         0.00069   |
-|    8 | **Redirect**       |                    0.00045   |                         0.00020   |                   0.00040   |                         0.00034   | 
-|    9 | **PopupWindow**    |                   -0.00044   |                         0.00050   |                  -0.00052   |                         0.00064   |
-|   10 | **Right_Click**    |                  -0.000015   |                         0.00005   |                 -0.000015   |                         0.00006   |
+|    1 |   URL_of_Anchor    |                    0.16810   |                         0.00352   |                   0.16777   |                         0.00351   |
+|    2 |   SSLFinal_State   |                    0.11988   |                         0.00359   |                   0.12049   |                          0.00282  |
+|    3 |   URL_Length       |                    0.11492   |                         0.00489   |                   0.11580   |                         0.00454   |
+|    4 |   Iframe           |                    0.07560   |                         0.00388   |                   0.07607   |                         0.00378   |
+|    5 |   Web_Traffic      |                    0.03902   |                         0.00238   |                   0.03914   |                         0.00223   |
+|    6 |   Mouse_Over       |                    0.03696   |                         0.00297   |                   0.03772   |                         0.00276   |
+|    7 |   Favicon          |                    0.00098   |                         0.00068   |                   0.00080   |                         0.00069   |
+|    8 |   Redirect         |                    0.00045   |                         0.00020   |                   0.00040   |                         0.00034   | 
+|    9 |   PopupWindow      |                   -0.00044   |                         0.00050   |                  -0.00052   |                         0.00064   |
+|   10 |   Right_Click      |                  -0.000015   |                         0.00005   |                 -0.000015   |                         0.00006   |
 
 
 Interpretación: La diferencia media de precisión representa la disminución promedio en la precisión del modelo tras permutar aleatoriamente una característica. Valores más altos indican una mayor contribución al rendimiento predictivo. La desviación estándar refleja la variabilidad de la estimación de importancia entre las permutaciones.
@@ -175,6 +175,18 @@ GLM_Absolute_Importance → elimina el signo y conserva la magnitud.
 
 Surrogate Random Forest
 
+| Rank | Variable       | Importance |
+| ---: | -------------- | ---------: |
+|    1 | SSLFinal_State |     2.3372 |
+|    2 | Web_Traffic    |     1.9044 |
+|    3 | URL_of_Anchor  |    1 .8930 |
+|    4 | URL_Length     |     1.2200 |
+|    5 | Redirect       |        0.4 |
+|    6 | Iframe         |     0.3239 |
+|    7 | popUpWidnow    |     0.2406 |
+|    8 | Mouse_over     |     0.1934 |
+|    9 | Favicon        |     0.1069 |
+|   10 | Right_Click    |     0.0769 |
 
 12.3. Global Feature Importance
 
