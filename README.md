@@ -136,15 +136,15 @@ XII. Interpretabilidad y análisis global
 | Rank | Feature                  | Mean Accuracy Diff (10 Perm) | Std. Dev. Accuracy Diff (10 Perm) | Mean Accuracy Diff (30 Perm) | Std. Dev. Accuracy Diff (30 Perm) |
 | ---: | -----------------------: | --------------------------:  | -------------------------------:  | --------------------------:  | -------------------------------:  |
 |    1 |   URL_of_Anchor          |                    0.16810   |                         0.00352   |                    0.16777   |                         0.00351   |
-|    2 |   Prefix_Suffix          |                    0.16810   |                         0.00352   |                    0.12620   |                         0.00490   |
+|    2 |   Prefix_Suffix          |                    0.12600   |                         0.00541   |                    0.12620   |                         0.00490   |
 |    3 |   SSLFinal_State         |                    0.11988   |                         0.00359   |                    0.12049   |                         0.00282   |
 |    4 |   URL_Length             |                    0.11492   |                         0.00489   |                    0.11580   |                         0.00454   |
-|    5 |   Have_At                |                    0.07560   |                         0.00388   |                    0.07791   |                         0.00386   |
+|    5 |   Have_At                |                    0.07684   |                         0.00416   |                    0.07791   |                         0.00386   |
 |    6 |   Iframe                 |                    0.07560   |                         0.00388   |                    0.07607   |                         0.00378   |
-|    7 |   Links_pointing-to_page |                    0.03902   |                         0.00238   |                    0.05560   |                         0.00339   |
-|    8 |   Have_IP                |                    0.03696   |                         0.00297   |                    0.04950   |                         0.00340   |
-|    9 |   Web_Traffic            |                    0.00098   |                         0.00068   |                    0.03914   |                         0.00223   |
-|   10 |   Mouse_Over             |                    0.00045   |                         0.00020   |                    0.03772   |                         0.00276   | 
+|    7 |   Links_pointing-to_page |                    0.05404   |                         0.00330   |                    0.05560   |                         0.00339   |
+|    8 |   Have_IP                |                    0.04981   |                         0.00363   |                    0.04950   |                         0.00340   |
+|    9 |   Web_Traffic            |                    0.03902   |                         0.00238   |                    0.03914   |                         0.00223   |
+|   10 |   Mouse_Over             |                    0.03696   |                         0.00297   |                    0.03772   |                         0.00276   | 
 
 
 Interpretación: La diferencia media de precisión representa la disminución promedio en la precisión del modelo tras permutar aleatoriamente una característica. Valores más altos indican una mayor contribución al rendimiento predictivo. La desviación estándar refleja la variabilidad de la estimación de importancia entre las permutaciones.
