@@ -162,7 +162,7 @@ GLM_Absolute_Importance → elimina el signo y conserva la magnitud.
 
 | Feature        | GLM Coefficient | GLM_Absolute_Importance |
 | -------------- | --------------: | ----------------------: |
-| URL_of_Anchor |         -13.129 |                  13.129  |
+| URL_of_Anchor |         -13.729 |                  13.729  |
 | Redirect      |           7.148 |                   7.148  |
 | URL_Length    |          -6.372 |                   6.372  |
 | SSLFinal_State|          -5.760 |                   5.760  |
