@@ -229,16 +229,16 @@ GLM_Absolute_Importance = abs(GLM Coefficient)
 
 | Feature                    | GLM Coefficient | GLM_Absolute_Importance |
 | ------------------------:  | --------------: | ----------------------: |
-| Redirect                   |           7.148 |                   7.148  |
-| Iframe                     |           5.009 |                   5.009  |
-| Favicon                    |           4.353 |                   4.353  |
-| Shortining_Service         |           2.656 |                   2.656  |
-| Prefix_Suffix              |           1.482 |                   1.482  |
-| double_slash_redirecting   |           1.225 |                   1.225  |
-| Have_At                    |           1.163 |                   1.163  |
-| Abnormal_URL               |           0.792 |                   0.792  |
-| Submitting_to_email        |           0.483 |                   0.483  |
-| Page_Rank                  |           0.408 |                   0.408  |
+| URL_of_Anchor              |        -13.7298 |                  13.7298 |
+| Redirect                   |          7.1486 |                   7.1486 |
+| URL_Length                 |         -6.3723 |                   6.3723 |
+| SSLFinal_State             |         -5.7602 |                   5.7602 |
+| Iframe                     |          5.0094 |                   5.0094 |
+| Favicon                    |          4.3538 |                   4.3538 |
+| Right_Click                |         -4.0302 |                   4.0302 |
+| Mouse_Over                 |         -3.6950 |                   3.6950 |
+| Web_Traffic                |         -3.6755 |                   3.6755 |
+| popUpWidnow                |         -2.6761 |                   2.6761 |
 
 **10.2.2 Surrogate Random Forest**
 
