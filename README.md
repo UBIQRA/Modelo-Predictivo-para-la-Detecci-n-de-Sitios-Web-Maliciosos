@@ -139,7 +139,7 @@ Por lo tanto, las técnicas de interpretabilidad global se aplicaron tomando com
 
 **10.1.1 XGBoost Feature Importance**
 
-| Rank | Feature        | Importance |
+| Rank | Feature        | Importance |                
 | ---: | -------------- | ---------: |
 |    1 | URL_Length     |     56.013 |
 |    2 | SSLFinal_State |     49.365 |
@@ -151,6 +151,69 @@ Por lo tanto, las técnicas de interpretabilidad global se aplicaron tomando com
 |    8 | Mouse_over     |      3.070 |
 |    9 | Links_in_tags  |      2.131 |
 |   10 | Iframe         |      2.042 |
+
+**10.1.2 Decisión Tree Feature Importance**
+
+| Rank | Feature                    | Importance |
+| ---: | ------------------------   | ---------: |
+|    1 | URL_Length                 |     0.9677 |
+|    2 | Shorting_Service           |     0.9354 |
+|    3 | Have_At                    |     0.9032 |
+|    4 | double_slash_redirecting   |     0.8709 |
+|    5 | Prefix_Suffix              |     0.8387 |
+|    6 | having_Sub_Domain          |     0.8064 |
+|    7 | SSLFinal_State             |     0.7741 |
+|    8 | Domain_registration_lenght |     0.7419 |
+|    9 | Favicon                    |     0.7096 |
+|   10 | port                       |     0.6774 |
+
+**10.1.3 Naive Bayes Feature Importance**
+
+
+| Rank | Feature                    | Importance |
+| ---: | ------------------------   | ---------: |
+|    1 | URL_of_Anchor              |     2.1211 |
+|    2 | URL_Length                 |     1.2041 |
+|    3 | Statical_report            |     1.1596 |
+|    4 | port                       |     1.1303 |
+|    5 | Favicon                    |     1.0959 |
+|    6 | double_slash_redirecting   |     1.0657 |
+|    7 | Shorting_Service           |     1.0487 |
+|    8 | Prefix_Suffix              |     0.8673 |
+|    9 | Have_IP                    |     0.8639 |
+|   10 | Have_At                    |     0.7162 |
+
+**10.1.4 Logistic Regresión  Feature Importance**
+
+
+| Rank | Feature                    | Importance |
+| ---: | ------------------------   | ---------: |
+|    1 | URL_of_Anchor              |     4.3750 |
+|    2 | Redirect                   |     2.8748 |
+|    3 | URL_Length                 |     2.0673 |
+|    4 | SSLFinal_State             |     1.9248 |
+|    5 | iFrame                     |     1.1617 |
+|    6 | Right_Click                |     1.0614 |
+|    7 | Constant                   |     0.9770 |
+|    8 | double_slash_redirecting   |     0.9109 |
+|    9 | Links_pointing_to_page     |     0.8379 |
+|   10 | Mouse_Over                 |     0.8356 |
+
+
+**10.1.5 Random Forest  Feature Importance**
+
+| Rank | Feature                    | Importance |
+| ---: | ------------------------   | ---------: |
+|    1 | SSLFinal_State             |     162.00 |
+|    2 | URL_of_Anchor              |     121.00 |
+|    3 | Web_Traffic                |      89.00 |
+|    4 | having_Sub_Domain          |      85.00 |
+|    5 | SFH                        |      81.00 |
+|    6 | Prefix_Suffix              |      70.00 |
+|    7 | URL_Length                 |      68.00 |
+|    8 | Links_in_tags              |      54.00 |
+|    9 | Domain_registration_lenght |      42.00 |
+|   10 | Request_URL                |      36.00 |
 
 
 **10.2. Surrogate Models**
